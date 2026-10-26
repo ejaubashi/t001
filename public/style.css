@@ -5,3 +5,23 @@
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.star-wars .tile .media{transform:none}}
 .header{align-items:start}
 @media(min-width:650px){.header .services,.header .recognition{margin-left:-1.4rem}}
+/* Scroll choreography: the three anchors define one travelling, turning card. */
+.profile-motion-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:12}
+.profile-card-ready .profile-image img{visibility:hidden}
+.profile-image{position:relative;top:auto;aspect-ratio:1080/1920}
+.profile-bridge{margin-top:30rem;pointer-events:none}
+.profile-card-middle{grid-column:6/span 3;aspect-ratio:1080/1920}
+.profile-card-end{width:calc((100% - 4 * var(--gutter)) / 5 * 2 + var(--gutter));aspect-ratio:1080/1920;position:absolute;left:0;top:0}
+.profile-course .section-aside{position:relative;padding-left:calc(100% / 5 * 3)}
+.profile-card-anchor{pointer-events:none}
+.motion-ghost{will-change:transform}
+@media(min-width:650px){
+.profile-info>.section-label{grid-column:6/span 3}
+.info-detail{grid-column:9/span 6;display:block}
+.info-detail>div{margin-bottom:.5rem;padding-left:1.4rem;max-width:34rem}
+.info-detail>div>ul,.info-detail>div>p{margin-top:0}
+.profile-newsletter{margin-top:10rem}
+}
+@media(max-width:649px){.profile-bridge,.profile-card-end,.profile-motion-canvas{display:none!important}.profile-course .section-aside{padding-left:0}}
+@media(prefers-reduced-motion:reduce){.profile-motion-canvas{display:none!important}.profile-card-ready .profile-image img{visibility:visible}.motion-ghost{display:none}}
+@media(min-width:650px){.profile-newsletter .section-copy{grid-column:9/span 6}}
