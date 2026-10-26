@@ -27,28 +27,8 @@ export function installSmoothWheel() {
   return stop;
 }
 
-// Capture visible cards before a Grid/Gallery layout change, then animate their
-// media to the new rectangles. The actual articles retain focus and semantics.
-export function captureCards(){
-  if(reduce.matches||innerWidth<650)return [];
-  return [...document.querySelectorAll('.tile')].filter(el=>el.dataset.index==='0').map(el=>{
-    const media=el.querySelector('.media'),rect=media.getBoundingClientRect();
-    if(rect.bottom<0||rect.top>innerHeight)return null;
-    const clone=media.cloneNode(true);clone.querySelectorAll('video').forEach(v=>{const src=media.querySelector('video')?.src;if(src){v.src=src;v.muted=true;v.play().catch(()=>{});}});
-    return {slug:el.dataset.project,rect,clone};
-  }).filter(Boolean);
-}
-export function moveCards(cards){
-  cards.forEach(({slug,rect,clone},i)=>{
-    const target=document.querySelector(`.tile[data-project="${CSS.escape(slug)}"] .media`);
-    if(!target)return;const next=target.getBoundingClientRect();if(next.bottom<0||next.top>innerHeight)return;
-    Object.assign(clone.style,{position:'fixed',left:`${rect.left}px`,top:`${rect.top}px`,width:`${rect.width}px`,height:`${rect.height}px`,margin:0,zIndex:45,transformOrigin:'0 0',pointerEvents:'none'});
-    clone.classList.add('motion-ghost');clone.setAttribute('aria-hidden','true');document.body.append(clone);target.style.visibility='hidden';
-    const end=`translate(${next.left-rect.left}px,${next.top-rect.top}px) scale(${next.width/rect.width},${next.height/rect.height})`;
-    const animation=clone.animate([{transform:'translate(0,0) scale(1)'},{transform:end}],{duration:1100,delay:i*45,easing:'cubic-bezier(.76,0,.24,1)',fill:'both'});
-    const cleanup=()=>{clone.querySelectorAll('video').forEach(v=>v.pause());clone.remove();target.style.visibility='';};animation.finished.then(cleanup,cleanup);
-  });
-}
+// Keep every visible media plane, not only the lead image, during a view change.
+export { captureLayout as captureCards, flowToLayout as moveCards } from './media-flow.js';
 
 const vertex = `
 attribute vec2 a_uv;
