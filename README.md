@@ -20,10 +20,14 @@ Reference-study evidence lives outside this checkout at `/workspace/site-study/S
 
 ## Motion
 
-Fine-pointer wheel input uses inertial scrolling (0.15 interpolation, 1.25 wheel multiplier), including the project viewer. Touch and keyboard scrolling stay native. Profile now uses an original WebGL mesh renderer: one textured card interpolates between three layout anchors, rotates with scroll progress, changes imagery, and bends with movement. Grid/Gallery changes use subdivided WebGL media planes: all visible images move between layouts with staggered vertex motion, surface curvature and outgoing pinch effects. Gallery hover moves the selected project into its full-width top thumbnail strip and restores it on leaving. The motion module cleans up its canvas and GPU resources when leaving Profile.
+Fine-pointer wheel input uses inertial scrolling (0.15 interpolation, 1.25 wheel multiplier), including the project viewer. Touch and keyboard scrolling stay native. Profile now uses an original WebGL mesh renderer: one textured card interpolates between three layout anchors, rotates with scroll progress, changes imagery, and bends with movement. The motion module cleans up its canvas and GPU resources when leaving Profile.
 
 Reduced-motion users get native scrolling, immediate layout changes and the static profile image. Devices without WebGL keep the static image too. The scroll card is a recreation of the studied behavior, with eight local texture variations rather than the reference's full image sequence.
 
 Deployment builds add a content revision to JavaScript, module imports and stylesheet URLs so a new release does not reuse older cached code.
 
-Gallery composition is regenerated when entering the view. Hovering a project fades the header and dims other work, moves the project frames into the top strip, and shows a pointer-following title; leaving returns the media to its layout.  These reproduce the studied interaction structure with original rendering code; they do not duplicate the reference shader pixel for pixel.
+## Option B experiment
+
+`/elastic/` and `/gallery/` show the elastic masonry experiment: three individually damped columns on desktop, two on tablet, and a static single column on mobile. The image covers have restrained hover motion and update a subtle ambient colour. Existing Focus remains available at `/focus/` for comparison.
+
+The exact pre-experiment site is preserved by the pushed annotated tag `focus-before-elastic-b-2026-10-26` (commit `c00b7f934dd15bc8fc2a4ff939e2f6e99c81f726`). See `EXPERIMENTS.md` for rollback instructions.
