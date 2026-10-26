@@ -25,3 +25,35 @@
 @media(max-width:649px){.profile-bridge,.profile-card-end,.profile-motion-canvas{display:none!important}.profile-course .section-aside{padding-left:0}}
 @media(prefers-reduced-motion:reduce){.profile-motion-canvas{display:none!important}.profile-card-ready .profile-image img{visibility:visible}.motion-ghost{display:none}}
 @media(min-width:650px){.profile-newsletter .section-copy{grid-column:9/span 6}}
+/* Keep mode controls usable on phones as well as desktop. */
+@media(max-width:649px){
+.view-switch,.mode-switch{display:flex;bottom:max(1.2rem,env(safe-area-inset-bottom));font-size:1.4rem;gap:.4rem;padding:.2rem .5rem;background:#242424e6}
+.view-switch a,.mode-switch button{min-height:4rem;display:flex;align-items:center;padding-inline:.3rem}
+.mode-switch{flex-wrap:wrap;justify-content:flex-end;max-width:23rem}
+.gallery .tile:nth-child(even) .tile-caption{visibility:visible}
+.gallery .tile-caption{position:static;opacity:1;margin-bottom:.6rem}
+.gallery .tile .media{width:100%}
+.footer{padding-bottom:8rem}
+#toast{bottom:8rem;width:max-content;max-width:calc(100% - 3rem);font-size:1.4rem;text-align:center}
+}
+#space-effects{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:85;display:none}
+.star-wars #space-effects{display:block}
+.star-wars #stars{z-index:0}
+#site{position:relative;z-index:1}
+.star-wars .mode-switch{max-width:none}
+.crawl-trigger{border-left:1px solid #ffffff40;padding-left:.7rem!important;margin-left:.3rem}
+.space-cut{mask-size:100% 100%;-webkit-mask-size:100% 100%}
+#space-crawl{position:fixed;inset:0;margin:0;width:100%;height:100%;max-width:none;max-height:none;padding:0;border:0;border-radius:0;background:transparent;overflow:hidden;color:#ffe81f}
+#space-crawl::backdrop{background:#000b;backdrop-filter:none}
+.crawl-open{overflow:hidden}
+.crawl-open #site{visibility:hidden}
+.crawl-close{position:fixed;right:2rem;top:2rem;z-index:2;font-size:1.7rem;padding:1rem;background:#222b;border-radius:.5rem;color:#ffe81f}
+.crawl-stage{position:absolute;inset:0;perspective:500px;overflow:hidden;mask-image:linear-gradient(transparent,black 22%)}
+.crawl-copy{position:absolute;top:85%;left:18%;width:64%;font-size:5rem;line-height:1.2;font-weight:500;letter-spacing:-.02em;text-align:justify;transform-origin:50% 0;animation:opening-crawl 36s linear forwards}
+.crawl-copy h2{text-align:center;font-size:6rem;margin-bottom:6rem}
+.crawl-copy p{margin-bottom:5rem}
+@keyframes opening-crawl{from{transform:rotateX(28deg) translateY(0)}to{transform:rotateX(28deg) translateY(-240rem)}}
+@media(max-width:649px){.star-wars .mode-switch{max-width:23rem}.crawl-copy{font-size:3rem;left:10%;width:80%}.crawl-copy h2{font-size:4rem}.crawl-close{font-size:1.7rem}#space-effects{display:none!important}}
+@media(prefers-reduced-motion:reduce){#space-effects{display:none!important}.crawl-stage{position:relative;overflow:auto;height:100%;mask-image:none;padding:8rem 2rem 2rem}.crawl-copy{position:relative;top:auto;left:auto;width:min(70rem,100%);margin:auto;transform:none;animation:none!important;font-size:3rem}}
+
+@media(max-width:649px){.view-switch a,.mode-switch button{min-height:44px}}
