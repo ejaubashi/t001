@@ -8,7 +8,7 @@ const output = path.join(root, 'dist');
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 await cp(path.join(root, 'public'), output, { recursive: true });
-const modules = ['app.js','motion.js','space.js','media-flow.js'];
+const modules = ['app.js','motion.js','media-flow.js'];
 const hash = createHash('sha256');
 for (const name of [...modules,'style.css']) hash.update(await readFile(path.join(output,name)));
 const revision = hash.digest('hex').slice(0,12);
@@ -22,6 +22,8 @@ html = html.replace('<head>', `<head>\n<script>window.__PORTFOLIO_BASE__=${JSON.
   .replace(/(app\.js|style\.css)"/g, `$1?v=${revision}"`);
 await writeFile(path.join(output, 'index.html'), html);
 await writeFile(path.join(output, '404.html'), html);
+await mkdir(path.join(output,'focus'),{recursive:true});
+await writeFile(path.join(output,'focus','index.html'),html);
 let css = await readFile(path.join(output, 'style.css'), 'utf8');
 await writeFile(path.join(output, 'style.css'), css.replaceAll("url('/", `url('${base}/`));
 await writeFile(path.join(output, '.nojekyll'), '');

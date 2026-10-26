@@ -6,7 +6,7 @@ Run `npm run dev`, then open port 3000. Set `PORT` to use a different port. `npm
 
 Includes desktop Grid and Gallery, project details with numbered media navigation, browser Back and Escape, Profile, privacy, email-copy feedback, local images/videos, keyboard navigation and reduced-motion support. All core media is served locally.
 
-The Star Wars display is an interpretation with a moving starfield, yellow type, a lightsaber pointer and a perspective opening crawl. On desktop, move the pointer across an image to create a glowing heat trail that fades and restores the image; hold F for the crawl, or use the Crawl button on any device. Choose Normal to clear the cuts and exit the theme. Grid and Gallery controls remain available on mobile. The reference site's complete alternate-mode choreography could not be verified. Newsletter opens a local archive introduction; no subscription backend is configured, and no data is submitted.
+Focus mode (`/focus`) replaces the experimental Star Wars mode. It presents one large project preview with previous/next controls, a thumbnail filmstrip, arrow-key navigation and touch swipes. Selecting Explore opens the full project viewer. Transitions respect reduced-motion preferences. Reference content remains for visual comparison; newsletter subscriptions have no backend.
 
 The reference name, copy, contact address, external links, project media and typeface remain for visual comparison. Replace these in `public/data.json` and `public/assets` with your own portfolio before publishing; confirm appropriate rights for any reference assets/typeface you retain. The displayed email button copies the reference contact address.
 
@@ -26,4 +26,4 @@ Reduced-motion users get native scrolling, immediate layout changes and the stat
 
 Deployment builds add a content revision to JavaScript, module imports and stylesheet URLs so a new release does not reuse older cached code.
 
-Gallery composition is regenerated when entering the view. Hovering a project fades the header and dims other work, moves the project frames into the top strip, and shows a pointer-following title; leaving returns the media to its layout. Star Wars heat/cut trails decay instead of leaving permanent holes. These reproduce the studied interaction structure with original rendering code; they do not duplicate the reference shader pixel for pixel.
+Gallery composition is regenerated when entering the view. Hovering a project fades the header and dims other work, moves the project frames into the top strip, and shows a pointer-following title; leaving returns the media to its layout.  These reproduce the studied interaction structure with original rendering code; they do not duplicate the reference shader pixel for pixel.

@@ -74,3 +74,31 @@
 body:has(.gallery.project-hover) .header{opacity:0;pointer-events:none}
 }
 .gallery-pointer{position:fixed;z-index:40;pointer-events:none;white-space:nowrap;font-size:1.7rem}
+.focus-mode{background:#080808}
+.focus-mode .header .availability,.focus-mode .header .services,.focus-mode .header .recognition{visibility:hidden}
+.focus-view{height:100svh;min-height:62rem;padding:10rem 4rem 8rem;display:grid;grid-template-columns:3fr 7fr;grid-template-rows:minmax(0,1fr) 7rem 2rem;column-gap:6rem;row-gap:2.5rem;overflow:hidden}
+.focus-info{display:flex;flex-direction:column;justify-content:space-between;min-width:0;padding-block:2rem}
+.focus-eyebrow{display:flex;justify-content:space-between;gap:2rem;color:#888;font-size:1.4rem}
+.focus-copy h1{font-size:6.5rem;line-height:.95;letter-spacing:-.04em;margin:4rem 0 2.5rem;text-wrap:balance}
+.focus-copy p{color:#aaa;max-width:34rem;line-height:1.3}
+.focus-actions{display:flex;align-items:center;justify-content:space-between;gap:2rem;margin-top:4rem}
+.focus-arrows{display:flex;gap:.8rem}
+.focus-arrows button{border:1px solid #ffffff40;border-radius:50%;width:4.5rem;height:4.5rem;text-align:center;transition:background .2s}
+.focus-arrows button:hover{background:#ffffff20}
+.focus-artwork{width:100%;height:100%;min-height:0;overflow:hidden;touch-action:pan-y;display:flex;align-items:center;justify-content:center;background:#111;border:1px solid #ffffff12;border-radius:.6rem}
+#focus-frame{display:flex;width:100%;height:100%;align-items:center;justify-content:center;will-change:transform,opacity}
+.focus-artwork .media{background:transparent;max-width:100%;max-height:100%;width:100%;height:100%;aspect-ratio:auto!important}
+.focus-artwork img,.focus-artwork video{object-fit:contain;width:100%;height:100%}
+.focus-filmstrip{grid-column:1/-1;display:flex;gap:1rem;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:#555 transparent;padding-bottom:.5rem}
+.focus-thumb{position:relative;width:10rem;height:6rem;flex:0 0 auto;opacity:.4;border:1px solid transparent;border-radius:.3rem;overflow:hidden;transition:opacity .2s,border-color .2s}
+.focus-thumb img{width:100%;height:100%;object-fit:cover}
+.focus-thumb span{position:absolute;bottom:.3rem;left:.5rem;font-size:1.1rem;color:#fff;text-shadow:0 1px 4px #000;background:#0009;padding:.1rem .3rem}
+.focus-thumb.selected,.focus-thumb:hover{opacity:1;border-color:#fff}
+.focus-hint{grid-column:1/-1;text-align:center;color:#666;font-size:1.2rem}
+.mode-switch a{color:#ffffff66;padding:.1rem .2rem}
+.mode-switch a.active,.mode-switch a:hover{color:#fff}
+@media(max-width:649px){
+.mode-switch a{min-height:44px;display:flex;align-items:center;padding-inline:.4rem}
+.focus-view{min-height:0;height:auto;min-height:100svh;padding:8rem 1.4rem 9rem;grid-template-columns:1fr;grid-template-rows:auto 38svh 6rem auto;gap:2rem}
+.focus-info{padding:0}.focus-eyebrow{font-size:1.2rem}.focus-copy h1{font-size:4.2rem;margin:2rem 0 1.5rem}.focus-copy p{font-size:1.4rem;max-width:none;line-height:1.25}.focus-actions{margin-top:2rem}.focus-arrows button{width:44px;height:44px}.focus-artwork{grid-row:2}.focus-filmstrip{grid-row:3}.focus-thumb{height:5.5rem;width:8rem}.focus-hint{grid-row:4;font-size:1.1rem}
+}
