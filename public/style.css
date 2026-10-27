@@ -180,3 +180,12 @@ body:has(.gallery.project-hover) .header{opacity:0;pointer-events:none}
 .living-fragment:not(.is-current):hover img,.living-fragment:focus-visible img{filter:none}
 .living-fragment.is-current img{max-height:25svh}
 @media(max-width:649px){.living-stage{height:48svh;min-height:34rem}.living-fragment.is-current{width:46%!important}.living-fragment.is-current img{max-height:21svh}.living-fragment:not(.is-current) img{max-height:9svh}}
+/* Open composition: three project fragments leave the sculpture unobstructed. */
+.living-stage{height:74svh;min-height:48rem;max-height:95rem;margin-block:3rem 5rem}
+.living-fragment.is-current img{max-height:23svh}
+.living-fragment:not(.is-current){opacity:.72;transition:width .75s cubic-bezier(.22,1,.36,1),opacity .25s}
+.living-fragment:not(.is-current):hover,.living-fragment:not(.is-current):focus-visible{opacity:1}
+.living-fragment:not(.is-current) img{max-height:13svh}
+.living-caption{padding-top:3rem}
+@media(max-width:649px){.living-stage{height:62svh;min-height:40rem;max-height:none;margin-block:2rem 4rem}.living-fragment.is-current{width:35%!important}.living-fragment.is-current img{max-height:17svh}.living-fragment:not(.is-current){width:15%!important}.living-fragment:not(.is-current) img{max-height:8svh}.living-caption{padding-top:2rem}}
+@media(prefers-reduced-motion:reduce){.living-fragment:not(.is-current){transition:none}}

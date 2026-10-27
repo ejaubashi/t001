@@ -39,3 +39,10 @@ If the user asks to return to this point, preserve any later work first. Restore
 - Project selection smoothly changes the shape; pointer proximity deforms it locally. Cards are smaller to expose the drawing. Rendering stops when the scene settles; reduced motion uses static geometry.
 - Canvas and SVG export share the same geometry. Reset restores the encounter count and base shape for the current project.
 - Gallery unchanged. Restore through a new commit if requested, without erasing later history.
+
+## Open sculpture composition — 27 October 2026
+
+- User selected fewer thumbnails, larger sculpture and more empty space.
+- Checkpoint tag: `focus-before-open-composition-2026-10-27`, pointing to `561265f872aff529c5b183742d7075609cbfb1f0`.
+- Three visible fragments (selected, next, previous), arranged at the edges to expose the sculpture's centre. All 19 projects remain available through keyboard arrows and the numbered index.
+- Larger stage and more surrounding space on desktop and mobile; existing sculpture interaction and export preserved.

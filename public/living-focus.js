@@ -2,7 +2,7 @@ import { filamentGeometry, paintFilament, filamentSVG } from './filament.js';
 export function mountLivingFocus(root,{projects,base,index,onSelect}){
  const stage=root.querySelector('.living-stage'),canvas=root.querySelector('canvas'),ctx=canvas.getContext('2d');
  const cards=[...root.querySelectorAll('.living-fragment')],pref=matchMedia('(prefers-reduced-motion:reduce)');
- const slots=[[.52,.47,27,0],[.13,.17,12,-6],[.84,.18,11,6],[.12,.79,10,5],[.86,.78,12,-5],[.43,.12,8,3],[.43,.88,9,-3],[.92,.46,7,7],[.25,.91,7,-7]];
+ const slots=[[.19,.82,22,0],[.87,.16,9,4],[.87,.85,9,-4]];
  let active=index,raf=0,last=0,energy=0,hoverTimer,disposed=false,w=1,h=1,pointer={x:.5,y:.5},inside=false;
  let nodes=cards.map(()=>({x:0,y:0,vx:0,vy:0,tx:0,ty:0,angle:0,visible:false,init:false}));
  const visited=new Set();
@@ -29,7 +29,7 @@ export function mountLivingFocus(root,{projects,base,index,onSelect}){
  }
  function wake(){if(!raf&&!disposed)raf=requestAnimationFrame(frame);}
  function layout(){w=stage.clientWidth;h=stage.clientHeight;const dpr=Math.min(devicePixelRatio,2);canvas.width=w*dpr;canvas.height=h*dpr;ctx?.setTransform(dpr,0,0,dpr,0,0);
-  cards.forEach((card,i)=>{const relative=(i-active+projects.length)%projects.length;const slot=relative<=4?relative:relative>=projects.length-4?projects.length-relative+4:-1;const n=nodes[i];n.visible=slot>=0;card.hidden=!n.visible;card.tabIndex=n.visible?0:-1;card.classList.toggle('is-current',i===active);card.setAttribute('aria-pressed',i===active);if(!n.visible)return;
+  cards.forEach((card,i)=>{const relative=(i-active+projects.length)%projects.length;const slot=relative===0?0:relative===1?1:relative===projects.length-1?2:-1;const n=nodes[i];n.visible=slot>=0;card.hidden=!n.visible;card.tabIndex=n.visible?0:-1;card.classList.toggle('is-current',i===active);card.setAttribute('aria-pressed',i===active);if(!n.visible)return;
    const [x,y,size,angle]=slots[slot];n.tx=x*w;n.ty=y*h;n.angle=i===active?0:angle;card.style.width=`${size}%`;card.style.zIndex=i===active?'5':'2';if(!n.init||pref.matches){n.x=n.tx;n.y=n.ty;n.init=true;}
   });energy=1;wake();
  }
