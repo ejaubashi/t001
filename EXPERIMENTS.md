@@ -55,3 +55,12 @@ If the user asks to return to this point, preserve any later work first. Restore
 - Quiet initial state: artworks hidden until discovery. Numbered navigation above the field and arrow keys can explicitly reveal every project. Encountered numbers gain a dot.
 - Touch users tap the field to uncover nearby projects, then tap an image to open. Reduced motion uses immediate opacity changes and static sculpture geometry.
 - Prior sculpture, imprint export, project Back and Gallery remain available. Previous state can be restored through a new commit.
+
+## Red typography and cursor study — 27 October 2026
+
+- User asked to explore red fonts, cursor and sculpture as a coherent page style.
+- Rollback tag: `focus-before-red-direction-2026-10-27`, commit `5b33c82ccbd95b93cde13433a1630bd5cde7874c`.
+- Focus uses local Space Grotesk variable display type and IBM Plex Mono labels; both downloaded from google/fonts with their SIL Open Font License files included under assets.
+- Vermilion sculpture and headings, warm-black background, matching red controls and contextual ring/crosshair cursor. Cursor switches Reveal/View on fine pointers only; touch and reduced motion retain native cursors.
+- Cursor stays within the sculpture interaction, never intercepts input, and is removed on route disposal. Gallery retains its existing styling.
+- SVG exports share the new red geometry and background. Previous state can be restored through a new commit.

@@ -20,7 +20,7 @@ export function filamentGeometry(width,height,{phase=0,pointer={x:.5,y:.5},influ
    points.push([x*width,y*height]);
   }
   const shade=.34+.44*(.5+.5*Math.sin(twist+.9));
-  paths.push({points,opacity:shade,color:i%29<2&&layers>1?'#d9c7a0':'#e6e5dc'});
+  paths.push({points,opacity:shade,color:i%29<2&&layers>1?'#ff9584':'#ff493f'});
  }
  return paths;
 }
@@ -30,5 +30,5 @@ export function paintFilament(ctx,paths,width,height){
 }
 export function filamentSVG(paths,width,height,encounters){
  const lines=paths.map(({points,opacity,color})=>`<path d="${points.map(([x,y],i)=>`${i?'L':'M'}${x.toFixed(2)},${y.toFixed(2)}`).join(' ')}Z" fill="none" stroke="${color}" stroke-opacity="${opacity.toFixed(3)}" stroke-width=".55"/>`).join('');
- return `<svg xmlns="http://www.w3.org/2000/svg" width="${width*2}" height="${(height+55)*2}" viewBox="0 0 ${width} ${height+55}"><rect width="100%" height="100%" fill="#101211"/>${lines}<text x="24" y="${height+30}" fill="#acae9e" font-family="monospace" font-size="9">FOCUS / LIVING FILAMENT / ${encounters} ENCOUNTERS</text></svg>`;
+ return `<svg xmlns="http://www.w3.org/2000/svg" width="${width*2}" height="${(height+55)*2}" viewBox="0 0 ${width} ${height+55}"><rect width="100%" height="100%" fill="#100b0c"/>${lines}<text x="24" y="${height+30}" fill="#ff786e" font-family="monospace" font-size="9">FOCUS / LIVING FILAMENT / ${encounters} ENCOUNTERS</text></svg>`;
 }

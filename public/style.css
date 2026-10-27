@@ -203,3 +203,45 @@ body:has(.gallery.project-hover) .header{opacity:0;pointer-events:none}
 @media(max-width:649px){.living-heading+.living-index{gap:0;margin-top:1rem}.living-heading+.living-index button{min-width:30px;min-height:32px}}
 .focus-mode .header{pointer-events:none}
 .focus-mode .header a,.focus-mode .header button{pointer-events:auto}
+/* Red study: warm black, signal red, geometric display type and precise mono. */
+@font-face{font-family:FocusGrotesk;src:url('/assets/SpaceGrotesk-Variable.ttf') format('truetype');font-weight:300 700;font-style:normal;font-display:swap}
+@font-face{font-family:FocusMono;src:url('/assets/IBMPlexMono-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+.focus-mode{--focus-red:#ff5a4f;--focus-muted:#b18a87;background:#100b0c;color:#f0e6e3;font-family:FocusGrotesk,Arial,sans-serif}
+.focus-mode ::selection{background:var(--focus-red);color:#100b0c}
+.living-focus{--living-accent:var(--focus-red);background:radial-gradient(ellipse at 50% 42%,#6b18151a,transparent 68%)}
+.focus-mode .header{mix-blend-mode:normal;font-size:1.4rem;align-items:center}
+.focus-mode .header-name{font-family:FocusGrotesk,Arial,sans-serif;font-size:3.8rem;line-height:.85;font-weight:600;letter-spacing:-.09em;color:var(--focus-red)}
+.focus-mode .header-profile,.focus-mode .header-contact{font-family:FocusMono,monospace;font-size:1.1rem;color:var(--focus-red)}
+.living-heading{font-family:FocusMono,monospace;border-color:#ff5a4f40;color:var(--focus-red);font-size:1rem;letter-spacing:.08em}
+.living-heading span{color:var(--focus-muted)}
+.living-stage canvas{filter:drop-shadow(0 0 14px #ff392a12)}
+.living-axis{color:var(--focus-muted);font-family:FocusMono,monospace}
+.living-fragment span{font-family:FocusMono,monospace;background:#160d0fed;color:#ffd1c9}
+.living-caption{border-color:#ff5a4f40}
+.living-project .focus-eyebrow{font-family:FocusMono,monospace;color:var(--focus-muted)}
+.living-project h1{font-family:FocusGrotesk,Arial,sans-serif;font-weight:500;font-size:clamp(42px,6.5vw,110px);line-height:.92;letter-spacing:-.075em;color:var(--focus-red);margin:2rem 0;overflow-wrap:anywhere}
+.living-project>p:not(.focus-eyebrow){color:#c4adaa;font-size:1.4rem;line-height:1.6;max-width:54rem}
+.living-explore{font-family:FocusMono,monospace;color:var(--focus-red);font-size:1.1rem;letter-spacing:.03em;border-bottom:1px solid #ff5a4f70;padding-bottom:.5rem}
+.living-instrument{font-family:FocusMono,monospace;color:var(--focus-muted);font-size:1rem;line-height:1.7}
+.living-instrument .focus-arrows button{border-color:#ff5a4f60;color:var(--focus-red)}
+.living-instrument .focus-arrows button:hover{background:#ff5a4f18}
+.imprint-count{color:var(--focus-red)}.imprint-actions button:first-child{color:#f0e6e3}
+.living-index button{font-family:FocusMono,monospace;color:var(--focus-muted);font-size:1rem;border-radius:0}
+.living-index button.selected{border-color:var(--focus-red);color:var(--focus-red);background:#ff5a4f0a}
+.living-index button.encountered:after{background:var(--focus-red)}
+.living-key-hint{font-family:FocusMono,monospace;color:var(--focus-muted);font-size:.9rem}
+.focus-mode .view-switch,.focus-mode .mode-switch{font:1rem FocusMono,monospace;background:#261416d9;border:1px solid #ff5a4f30;border-radius:0;padding:.6rem .8rem;gap:1rem}
+.focus-mode .view-switch a,.focus-mode .mode-switch a{color:#b18a87}.focus-mode .view-switch a.active,.focus-mode .mode-switch a.active{color:var(--focus-red)}
+.focus-mode .project-info{background:#100b0c}.focus-mode .project-view{background:#100b0ce8}.focus-mode .project-top h1{font-weight:500;color:var(--focus-red);font-size:2.8rem;letter-spacing:-.04em}.focus-mode .back{color:var(--focus-red)}
+.focus-cursor{position:fixed;left:0;top:0;pointer-events:none;z-index:45;color:#ff5a4f}
+.focus-cursor[hidden]{display:none}
+.focus-cursor-ring{position:absolute;left:-17px;top:-17px;width:34px;height:34px;border:1px solid currentColor;border-radius:50%;transition:width .18s,height .18s,left .18s,top .18s,background .18s,transform .12s}
+.focus-cursor-ring:before,.focus-cursor-ring:after{content:'';position:absolute;background:currentColor;left:50%;top:50%;transform:translate(-50%,-50%)}
+.focus-cursor-ring:before{width:7px;height:1px}.focus-cursor-ring:after{height:7px;width:1px}
+.focus-cursor-label{position:absolute;left:26px;top:-6px;font:9px/1.2 FocusMono,monospace;letter-spacing:.06em;white-space:nowrap;background:#100b0ce8;padding:3px 5px}
+.focus-cursor.is-view .focus-cursor-ring{left:-23px;top:-23px;width:46px;height:46px;background:#ff5a4f18}.focus-cursor.is-view .focus-cursor-label{left:32px}
+.focus-cursor.is-pressed .focus-cursor-ring{transform:scale(.72)}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.living-stage.has-art-cursor,.living-stage.has-art-cursor *{cursor:none!important}}
+@media(max-width:649px){.focus-mode .header-name{font-size:3rem;grid-column:span 2}.focus-mode .header-profile,.focus-mode .header-contact{font-size:1rem}.living-heading{font-size:8px}.living-project h1{font-size:5.4rem}.living-project>p:not(.focus-eyebrow){font-size:1.4rem}.living-instrument{font-size:1rem}.living-index button{font-size:9px}.focus-mode .view-switch,.focus-mode .mode-switch{font-size:10px}.living-key-hint{font-size:9px}}
+
+.focus-cursor.near-edge .focus-cursor-label{left:auto;right:26px}

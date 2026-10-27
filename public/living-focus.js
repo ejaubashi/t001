@@ -3,6 +3,21 @@ export function mountLivingFocus(root,{projects,base,index,onSelect}){
  const stage=root.querySelector('.living-stage'),canvas=root.querySelector('canvas'),ctx=canvas.getContext('2d');
  const cards=[...root.querySelectorAll('.living-fragment')],pref=matchMedia('(prefers-reduced-motion:reduce)');
 
+ const finePointer=matchMedia('(hover:hover) and (pointer:fine)');
+ const cursor=document.createElement('div');cursor.className='focus-cursor';cursor.hidden=true;cursor.setAttribute('aria-hidden','true');
+ cursor.innerHTML='<span class="focus-cursor-ring"></span><span class="focus-cursor-label">REVEAL</span>';document.body.append(cursor);
+ function hideCursor(){cursor.hidden=true;stage.classList.remove('has-art-cursor');}
+ function cursorMove(e){
+  if(e.pointerType==='touch'||!finePointer.matches||pref.matches||document.body.classList.contains('project-open')||!stage.contains(e.target)){hideCursor();return;}
+  cursor.hidden=false;stage.classList.add('has-art-cursor');cursor.style.left=`${e.clientX}px`;cursor.style.top=`${e.clientY}px`;
+  const card=e.target.closest('.living-fragment');cursor.classList.toggle('is-view',!!card);cursor.classList.toggle('near-edge',e.clientX>innerWidth-150);
+  cursor.querySelector('.focus-cursor-label').textContent=card?`VIEW / ${String(Number(card.dataset.livingIndex)+1).padStart(2,'0')} ↗`:'REVEAL';
+ }
+ function cursorDown(){cursor.classList.add('is-pressed');}
+ function cursorUp(){cursor.classList.remove('is-pressed');}
+ document.addEventListener('pointermove',cursorMove);document.addEventListener('pointerdown',cursorDown);document.addEventListener('pointerup',cursorUp);
+ window.addEventListener('blur',hideCursor);stage.addEventListener('pointerleave',hideCursor);pref.addEventListener('change',hideCursor);
+
  let pinned=-1;
  let active=index,raf=0,last=0,energy=0,hoverTimer,disposed=false,w=1,h=1,pointer={x:.5,y:.5},inside=false;
  let nodes=cards.map(()=>({x:0,y:0,vx:0,vy:0,tx:0,ty:0,angle:0,visible:true,init:false,reveal:0,lastSeen:-10000}));
@@ -46,12 +61,12 @@ export function mountLivingFocus(root,{projects,base,index,onSelect}){
    n.tx=x*w;n.ty=y*h;n.angle=((i*7)%9)-4;card.style.width=w<600?'24%':'13%';card.style.zIndex=i===active?'5':'2';if(!n.init||pref.matches){n.x=n.tx;n.y=n.ty;n.init=true;}
   });energy=1;wake();
  }
- function select(i,reveal=true){pinned=reveal?i:-1;active=i;trace(i);targetPhase=i*.37+visited.size*.15;layout();root.style.setProperty('--living-accent','#d9c7a0');}
+ function select(i,reveal=true){pinned=reveal?i:-1;active=i;trace(i);targetPhase=i*.37+visited.size*.15;layout();root.style.setProperty('--living-accent','#ff5a4f');}
  function move(e){if(e.pointerType==='touch')return;pinned=-1;const r=stage.getBoundingClientRect();pointer={x:(e.clientX-r.left)/w,y:(e.clientY-r.top)/h};inside=true;wake();}
  function leave(){inside=false;clearTimeout(hoverTimer);wake();}
  function hover(e){const card=e.target.closest('.living-fragment');if(!card||e.pointerType==='touch')return;clearTimeout(hoverTimer);const i=Number(card.dataset.livingIndex);if(i!==active)hoverTimer=setTimeout(()=>{if(!document.body.classList.contains('project-open'))onSelect(i)},850);}
  function out(e){if(e.target.closest('.living-fragment')&&!e.target.closest('.living-fragment').contains(e.relatedTarget))clearTimeout(hoverTimer);}
- function click(e){const card=e.target.closest('.living-fragment');if(card){clearTimeout(hoverTimer);const i=Number(card.dataset.livingIndex);e.preventDefault();e.stopPropagation();onSelect(i);root.querySelector('[data-focus-open]').click();}
+ function click(e){const card=e.target.closest('.living-fragment');if(card){clearTimeout(hoverTimer);const i=Number(card.dataset.livingIndex);e.preventDefault();e.stopPropagation();onSelect(i);hideCursor();root.querySelector('[data-focus-open]').click();}
   if(e.target===stage||e.target.closest('.living-axis')){const r=stage.getBoundingClientRect();pointer={x:(e.clientX-r.left)/w,y:(e.clientY-r.top)/h};inside=true;const nearest=nodes.reduce((best,n,i)=>Math.hypot(n.tx-e.clientX+r.left,n.ty-e.clientY+r.top)<best.d?{i,d:Math.hypot(n.tx-e.clientX+r.left,n.ty-e.clientY+r.top)}:best,{i:0,d:Infinity});pinned=nearest.i;wake();}
   if(e.target.closest('[data-save-imprint]'))save();
   if(e.target.closest('[data-reset-imprint]')){visited.clear();root.querySelectorAll('.encountered').forEach(el=>el.classList.remove('encountered'));trace(active);targetPhase=active*.37+.15;energy=1;wake();}
@@ -62,5 +77,5 @@ export function mountLivingFocus(root,{projects,base,index,onSelect}){
  }
  stage.addEventListener('pointermove',move);stage.addEventListener('pointerleave',leave);stage.addEventListener('pointerover',hover);stage.addEventListener('pointerout',out);root.addEventListener('click',click);
  const ro=new ResizeObserver(layout);ro.observe(stage);pref.addEventListener('change',layout);select(active,false);
- return {select,dispose(){disposed=true;cancelAnimationFrame(raf);clearTimeout(hoverTimer);ro.disconnect();pref.removeEventListener('change',layout);stage.removeEventListener('pointermove',move);stage.removeEventListener('pointerleave',leave);stage.removeEventListener('pointerover',hover);stage.removeEventListener('pointerout',out);root.removeEventListener('click',click);}};
+ return {select,dispose(){hideCursor();cursor.remove();document.removeEventListener('pointermove',cursorMove);document.removeEventListener('pointerdown',cursorDown);document.removeEventListener('pointerup',cursorUp);window.removeEventListener('blur',hideCursor);stage.removeEventListener('pointerleave',hideCursor);pref.removeEventListener('change',hideCursor);disposed=true;cancelAnimationFrame(raf);clearTimeout(hoverTimer);ro.disconnect();pref.removeEventListener('change',layout);stage.removeEventListener('pointermove',move);stage.removeEventListener('pointerleave',leave);stage.removeEventListener('pointerover',hover);stage.removeEventListener('pointerout',out);root.removeEventListener('click',click);}};
 }
