@@ -46,3 +46,12 @@ If the user asks to return to this point, preserve any later work first. Restore
 - Checkpoint tag: `focus-before-open-composition-2026-10-27`, pointing to `561265f872aff529c5b183742d7075609cbfb1f0`.
 - Three visible fragments (selected, next, previous), arranged at the edges to expose the sculpture's centre. All 19 projects remain available through keyboard arrows and the numbered index.
 - Larger stage and more surrounding space on desktop and mobile; existing sculpture interaction and export preserved.
+
+## Cursor discovery — 27 October 2026
+
+- User requested hidden artworks revealed by cursor movement, with access to every work.
+- Checkpoint tag: `focus-before-cursor-discovery-2026-10-27` (commit `27d041f9ba732ce2196c444d9754668d2d476f2e`).
+- All 19 works occupy fixed positions across the sculpture field. Proximity reveals nearby images with a short fading trail; hover selects and a single click opens a project.
+- Quiet initial state: artworks hidden until discovery. Numbered navigation above the field and arrow keys can explicitly reveal every project. Encountered numbers gain a dot.
+- Touch users tap the field to uncover nearby projects, then tap an image to open. Reduced motion uses immediate opacity changes and static sculpture geometry.
+- Prior sculpture, imprint export, project Back and Gallery remain available. Previous state can be restored through a new commit.
