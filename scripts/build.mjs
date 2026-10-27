@@ -8,7 +8,7 @@ const output = path.join(root, 'dist');
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 await cp(path.join(root, 'public'), output, { recursive: true });
-const modules = ['app.js','motion.js','media-flow.js','elastic.js','living-focus.js'];
+const modules = ['app.js','motion.js','media-flow.js','elastic.js','living-focus.js','filament.js'];
 const hash = createHash('sha256');
 for (const name of [...modules,'style.css']) hash.update(await readFile(path.join(output,name)));
 const revision = hash.digest('hex').slice(0,12);

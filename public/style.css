@@ -167,3 +167,16 @@ body:has(.gallery.project-hover) .header{opacity:0;pointer-events:none}
 .living-key-hint{font:1rem monospace;color:#737c69;margin-top:1rem}
 @media(max-width:649px){.living-focus{padding:8rem 1.4rem 4rem}.living-heading{font-size:9px;letter-spacing:.06em}.living-heading span{display:none}.living-stage{height:48svh;min-height:32rem;margin-block:1rem 3rem}.living-fragment.is-current{width:55%!important}.living-fragment:not(.is-current) img{max-height:11svh}.living-fragment span{font-size:7px;max-width:100%;overflow:hidden}.living-caption{display:block;padding-top:2rem}.living-project h1{font-size:4.5rem}.living-project>p:not(.focus-eyebrow){font-size:1.4rem}.living-instrument{margin-top:3rem;display:grid;grid-template-columns:1fr auto;font-size:1.1rem;gap:1rem}.living-instrument .focus-arrows{margin:0}.living-instrument .focus-arrows button{width:44px;height:44px}.imprint-actions{margin:0}.living-index{gap:.3rem;margin-top:2rem}.living-index button{min-width:32px;min-height:36px;font-size:10px}.living-key-hint{font-size:9px}.focus-mode .view-switch,.focus-mode .mode-switch{display:flex;position:relative;bottom:auto;left:auto;right:auto;margin:0 1.4rem 1.4rem;width:max-content;font-size:13px}.focus-mode .mode-switch{position:absolute;bottom:1.4rem;right:0;margin-bottom:0}}
 @media(prefers-reduced-motion:reduce){.living-fragment,.living-fragment img{transition:none}}
+/* Layered line sculpture trial: the drawing occupies the full stage. */
+.focus-mode{background:#101211}
+.living-focus{--living-accent:#d9c7a0;background:radial-gradient(ellipse at 50% 35%,#34393144,transparent 65%)}
+.living-stage{height:63svh;min-height:42rem;max-height:80rem}
+.living-stage canvas{filter:drop-shadow(0 0 12px #e6e5dc0a)}
+.living-axis{border:0;inset:2% 0;color:#6a7267}
+.living-axis span{bottom:0;left:0}
+.living-axis i{right:0;top:0}
+.living-fragment{box-shadow:0 8px 35px #0008}
+.living-fragment:not(.is-current) img{filter:saturate(.25) brightness(.65)}
+.living-fragment:not(.is-current):hover img,.living-fragment:focus-visible img{filter:none}
+.living-fragment.is-current img{max-height:25svh}
+@media(max-width:649px){.living-stage{height:48svh;min-height:34rem}.living-fragment.is-current{width:46%!important}.living-fragment.is-current img{max-height:21svh}.living-fragment:not(.is-current) img{max-height:9svh}}

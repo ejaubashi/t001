@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node server.mjs",
     "start": "node server.mjs",
-    "check": "node --check server.mjs && node --check public/app.js && node --check public/motion.js && node --check public/media-flow.js && node --check public/elastic.js && node --check public/living-focus.js",
+    "check": "node --check server.mjs && node --check public/app.js && node --check public/motion.js && node --check public/media-flow.js && node --check public/elastic.js && node --check public/living-focus.js && node --check public/filament.js",
     "build": "node scripts/build.mjs"
   },
   "engines": {
