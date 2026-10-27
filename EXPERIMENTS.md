@@ -18,3 +18,14 @@ If the user asks to return to this point, preserve any later work first. Restore
 - Columns respond to scroll velocity with individually damped offsets, bounded to 65px, returning to rest.
 - Low-amplitude cover hover movement, image-based ambient colour, direct project opening.
 - Native touch behavior and static reduced-motion fallback.
+
+## Living Focus composition — 27 October 2026
+
+- User approved trying the living composition + visitor imprint inside Focus.
+- Exact pre-change published commit: `e055f62051aaf8793fe26221561ec60bd7b445ac`.
+- Annotated checkpoint pushed to origin: `focus-before-living-composition-2026-10-27`.
+- Trial route: `/focus/`. Elastic Gallery remains unchanged.
+- Nine visible project fragments, pointer repulsion and damped rearrangement, 850ms hover selection, click/tap selection and centre artwork opening.
+- Arrow keys and numbered index expose all 19 projects. Each newly encountered project adds contour geometry; SVG export and reset are available.
+- Canvas is decorative; real buttons/images remain authoritative. Reduced motion disables spring movement. Rendering stops at rest and listeners/observers are disposed on route changes.
+- Restore checkpoint through a new commit if requested; preserve subsequent work and do not force-push.
